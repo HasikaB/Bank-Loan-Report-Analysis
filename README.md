@@ -14,22 +14,21 @@ Null values, duplicates, and inconsistencies were handled using Excel functions 
 SQL queries were used to generate calculated fields such as DTI, interest rate %, and monthly totals. These results were validated before visualization.
 4.	Validation
 SQL results were compared with Power BI outputs to ensure accurate visual representation before finalizing dashboards for reporting.
-5.	Preprocessing and Building Relationships
-To ensure accurate and flexible time-based analysis, performed structured preprocessing steps and built data model relationships in Power BI:
-	STEP 01: Load Dataset
+5.	Preprocessing and Building Relationships To ensure accurate and flexible time-based analysis, performed structured preprocessing steps and built data model relationships in Power BI:
+STEP 01: Load Dataset
 Import the dataset directly from SQL Server into Power BI using the “Get Data” option.
-	STEP 02: Check Data Quality
+STEP 02: Check Data Quality
 Go to Transform Data → View → Column Quality to identify columns with errors, empty values, or duplicate entries.
-	STEP 03: Create Calendar Table (Date Table)
+STEP 03: Create Calendar Table (Date Table)
 Create a new table using DAX to generate a continuous range of dates based on the issue_date field:
 Date Table = CALENDAR(MIN(bank_loan_data[issue_date]), MAX(bank_loan_data[issue_date]))
-	STEP 04: Add Month Column
+STEP 04: Add Month Column
 In the Date Table, create a new column to extract the month name:
 Month = FORMAT('Date Table'[Date],"mmmm")
-	STEP 05: Build Relationships
+STEP 05: Build Relationships
 Navigate to Model View and create a relationship between 
 DateTable[Date] and bank_loan_data[issue_date].
-	STEP 06: Configure Relationship
+STEP 06: Configure Relationship
 Set the relationship as One-to-Many (1:*), with DateTable[Date] as the Primary Key and bank_loan_data[issue_date] as the Foreign Key.
 DASHBOARD 1: SUMMARY
 Objective: Provide a high-level overview of key loan KPIs and classify loan status as Good or Bad.
