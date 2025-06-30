@@ -76,7 +76,8 @@ WHERE MONTH(issue_date) = 12
 PMTD Loan Applications
 SELECT COUNT(id) AS Total_Applications FROM bank_loan_data
 WHERE MONTH(issue_date) = 11
-<img width="468" alt="image" src="https://github.com/user-attachments/assets/efa7aa14-9d38-4bb2-ae4f-966b938f3ea5" />
+
+
 
  
 
